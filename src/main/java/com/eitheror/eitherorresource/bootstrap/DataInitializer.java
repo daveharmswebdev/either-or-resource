@@ -3,6 +3,7 @@ package com.eitheror.eitherorresource.bootstrap;
 import com.eitheror.eitherorresource.domain.Option;
 import com.eitheror.eitherorresource.repositories.OptionRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  * Date: 7/3/22
  * Time: 2:43 PM
  */
+@Profile({"local", "default"})
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -21,21 +23,12 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        optionRepository.deleteAll();
         Option cinderella = new Option("Cinderella", "Disney Princess");
-
-        System.out.println("Id: " + cinderella.getId());
-
         Option savedCinderella = optionRepository.save(cinderella);
 
-        System.out.println("Id: " + savedCinderella.getId());
-
         Option snowWhite = new Option("Snow White", "Disney Princess");
-
-        System.out.println("Id: " + snowWhite.getId());
-
         Option savedSnowWhite = optionRepository.save(snowWhite);
-
-        System.out.println("Id: " + savedSnowWhite.getId());
 
         optionRepository.findAll().forEach(option -> {
             System.out.println("Option Id: " + option.getId());

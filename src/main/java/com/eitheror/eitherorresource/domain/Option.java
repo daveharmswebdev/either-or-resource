@@ -11,7 +11,8 @@ import java.util.Objects;
  * Date: 7/3/22
  * Time: 2:03 PM
  */
-@Entity
+@Entity(name = "Option")
+@javax.persistence.Table(name = "\"Option\"")
 public class Option {
 
     @Id
