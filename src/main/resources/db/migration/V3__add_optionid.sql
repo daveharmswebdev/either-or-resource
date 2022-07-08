@@ -1,0 +1,1 @@
+alter table question ADD option_id BIGINT;
