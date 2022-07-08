@@ -1,6 +1,5 @@
 package com.eitheror.eitherorresource.controllers;
 
-import com.eitheror.eitherorresource.domain.Question;
 import com.eitheror.eitherorresource.domain.QuestionDto;
 import com.eitheror.eitherorresource.services.QuestionService;
 import org.springframework.http.HttpStatus;
@@ -32,8 +31,8 @@ public class QuestionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public QuestionDto createNewQuestion(@RequestBody Question question) {
-        return questionService.createNewQuestion(question);
+    public QuestionDto createNewQuestion(@RequestBody QuestionDto questionDto) {
+        return questionService.createNewQuestion(questionDto);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,5 @@
 package com.eitheror.eitherorresource.services;
 
-import com.eitheror.eitherorresource.domain.Question;
 import com.eitheror.eitherorresource.domain.QuestionDto;
 
 import java.util.List;
@@ -10,7 +9,7 @@ public interface QuestionService {
 
     QuestionDto getQuestionById(Long id);
 
-    QuestionDto createNewQuestion(Question question);
+    QuestionDto createNewQuestion(QuestionDto questionDto);
 
     void deleteQuestionById(Long id);
 }

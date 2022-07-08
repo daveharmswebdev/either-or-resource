@@ -31,14 +31,17 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public QuestionDto getQuestionById(Long id) {
-        return questionRepository.findById(id).map(questionMapper::questionToQuestionDto).orElseThrow(RuntimeException::new);
+        return questionRepository.findById(id).map(questionMapper::questionToQuestionDto).orElseThrow(() -> new ResourceNotFoundException("there isn't one"));
     }
 
     @Override
-    public QuestionDto createNewQuestion(Question question) {
+    public QuestionDto createNewQuestion(QuestionDto questionDto) {
+        Question question = questionMapper.questionDtoToQuestion(questionDto);
         Question savedQuestion = questionRepository.save(question);
 
-        return questionMapper.questionToQuestionDto(question);
+        QuestionDto returnDto = questionMapper.questionToQuestionDto(savedQuestion);
+
+        return returnDto;
     }
 
     @Override
