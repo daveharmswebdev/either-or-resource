@@ -1,6 +1,7 @@
 package com.eitheror.eitherorresource.controllers;
 
 import com.eitheror.eitherorresource.domain.Question;
+import com.eitheror.eitherorresource.domain.QuestionDto;
 import com.eitheror.eitherorresource.services.QuestionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +20,19 @@ public class QuestionController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Question> getAllQuestions() {
+    public List<QuestionDto> getAllQuestions() {
         return questionService.getAllQuestions();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Question getQuestionById(@PathVariable Long id) {
+    public QuestionDto getQuestionById(@PathVariable Long id) {
         return questionService.getQuestionById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Question createNewQuestion(@RequestBody Question question) {
+    public QuestionDto createNewQuestion(@RequestBody Question question) {
         return questionService.createNewQuestion(question);
     }
 

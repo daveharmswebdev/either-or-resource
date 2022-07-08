@@ -1,15 +1,16 @@
 package com.eitheror.eitherorresource.services;
 
 import com.eitheror.eitherorresource.domain.Question;
+import com.eitheror.eitherorresource.domain.QuestionDto;
 
 import java.util.List;
 
 public interface QuestionService {
-    List<Question> getAllQuestions();
+    List<QuestionDto> getAllQuestions();
 
-    Question getQuestionById(Long id);
+    QuestionDto getQuestionById(Long id);
 
-    Question createNewQuestion(Question question);
+    QuestionDto createNewQuestion(Question question);
 
     void deleteQuestionById(Long id);
 }
